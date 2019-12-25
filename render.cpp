@@ -1,5 +1,4 @@
 #include "render.h"
-
 #include <QPainter>
 
 Render::Render(QWidget *parent)
@@ -12,16 +11,8 @@ Render::Render(QWidget *parent)
     setAutoFillBackground(true);
 }
 
-QSize Render::minimumSizeHint() const
-{
-    return QSize(100, 100);
-}
-
-QSize Render::sizeHint() const
-{
-    return QSize(400, 200);
-}
-
+// Methods for updating the Render area
+///////////////////////////////////
 void Render::setShape(Shape shape)
 {
     this->shape = shape;
@@ -46,19 +37,19 @@ void Render::setTransformed(bool transformed)
     this->transformed = transformed;
     update();
 }
+///////////////////////////////////
 
 
+//Method fot painting
 void Render::paintEvent(QPaintEvent * /* event */)
 {
-    //Точки
+    //Точки для многоугольника
     static const QPoint points[4] = {
         QPoint(10, 80),
         QPoint(20, 10),
         QPoint(80, 40),
         QPoint(90, 70)
     };
-
-//    QRect rect(10, 20, 80, 60);
 
     QPainter painter(this);
     painter.setPen(pen);
@@ -105,6 +96,4 @@ void Render::paintEvent(QPaintEvent * /* event */)
                   painter.drawPie(150, 100, 250, 200, 30 * 16, 120 * 16); // Отрисовываем сектор
                 break;
             }
-
- //           painter.restore();
 }

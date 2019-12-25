@@ -7,7 +7,6 @@
 #include <QPixmap>
 #include <QWidget>
 
-//! [0]
 class Render : public QWidget
 {
     Q_OBJECT
@@ -17,9 +16,6 @@ public:
                  Chord, Pie, };
 
     Render (QWidget *parent = 0);
-
-    QSize minimumSizeHint() const override;
-    QSize sizeHint() const override;
 
 public slots:
     void setShape(Shape shape);
@@ -36,6 +32,5 @@ private:
     QBrush brush;
     bool transformed;
 };
-//! [0]
 
 #endif // RENDER_H

@@ -11,7 +11,6 @@ class QSpinBox;
 QT_END_NAMESPACE
 class Render;
 
-//! [0]
 class Widget : public QWidget
 {
     Q_OBJECT
@@ -37,5 +36,5 @@ private:
     QComboBox *brushStyleComboBox;
     QCheckBox *rotateCheckBox;
 };
-//! [0]
+
 #endif // WIDGET_H

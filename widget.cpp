@@ -68,12 +68,12 @@ Widget::Widget()
     brushStyleLabel = new QLabel(tr("&Brush:"));
     brushStyleLabel->setBuddy(brushStyleComboBox);
 
-//  Опции
+//  Options
     otherOptionsLabel = new QLabel(tr("Опции:"));
     rotateCheckBox = new QCheckBox(tr("&Повернуть"));
 
 
-//  Connection
+//  Connection (slots)
     connect(shapeComboBox, QOverload<int>::of(&QComboBox::activated),
             this, &Widget::shapeChanged);
     connect(penWidthSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
@@ -112,11 +112,12 @@ Widget::Widget()
     setWindowTitle(tr("Графические примитивы"));
 }
 
-
+//Methods for parameters
 void Widget::shapeChanged()
 {
     Render::Shape shape = Render::Shape(shapeComboBox->itemData(
             shapeComboBox->currentIndex(), IdRole).toInt());
+
     renderArea->setShape(shape);
 }
 
@@ -137,5 +138,4 @@ void Widget::brushChanged()
             brushStyleComboBox->currentIndex(), IdRole).toInt());
 
     renderArea->setBrush(QBrush(Qt::green, style));
-
 }
