@@ -6,6 +6,7 @@ Render::Render(QWidget *parent)
 {
     shape = None;
     transformed = false;
+    scaled = false;
 
     setBackgroundRole(QPalette::Base);
     setAutoFillBackground(true);
@@ -31,19 +32,24 @@ void Render::setBrush(const QBrush &brush)
     update();
 }
 
-
 void Render::setTransformed(bool transformed)
 {
     this->transformed = transformed;
     update();
 }
+
+void Render::setScaled(bool scaled)
+{
+    this->scaled = scaled;
+    update();
+}
 ///////////////////////////////////
 
 
-//Method fot painting
+// Method fot painting
 void Render::paintEvent(QPaintEvent * /* event */)
 {
-    //Точки для многоугольника
+    // Точки для многоугольника
     static const QPoint points[4] = {
         QPoint(10, 80),
         QPoint(20, 10),
@@ -55,16 +61,21 @@ void Render::paintEvent(QPaintEvent * /* event */)
     painter.setPen(pen);
     painter.setBrush(brush);
 
-    //Поворот
+    // Поворот
     if (transformed) {
         painter.translate(250, -90);
         painter.rotate(60.0);
     }
+    // Увеличение
+    if (scaled) {
+        painter.translate(-55, -20);
+        painter.scale(1.30, 1.30);
+    }
 
-    //Сглаживание
+    // Сглаживание
     painter.setRenderHint(QPainter::Antialiasing, true);
 
-    //Форма фигуры
+    // Форма фигуры
     switch (shape) {
             case None:
                 painter.setBrush(QBrush(Qt::NoBrush)); // Отрисовываем пустоту
@@ -78,7 +89,7 @@ void Render::paintEvent(QPaintEvent * /* event */)
             case Polygon:
                 painter.translate(180, 90);
                 painter.scale(2, 2);
-                painter.drawPolygon(points, 4);
+                painter.drawPolygon(points, 4); // Отрисовываем многоугольник
                 break;
             case Circle:
                 painter.drawEllipse(190, 100, 150, 150); // Отрисовываем круг

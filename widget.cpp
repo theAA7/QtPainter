@@ -65,12 +65,13 @@ Widget::Widget()
     brushStyleComboBox->addItem(tr("Dense 6"), static_cast<int>(Qt::Dense6Pattern));
     brushStyleComboBox->addItem(tr("Dense 7"), static_cast<int>(Qt::Dense7Pattern));
 
-    brushStyleLabel = new QLabel(tr("&Brush:"));
+    brushStyleLabel = new QLabel(tr("&Заливка:"));
     brushStyleLabel->setBuddy(brushStyleComboBox);
 
 //  Options
     otherOptionsLabel = new QLabel(tr("Опции:"));
     rotateCheckBox = new QCheckBox(tr("&Повернуть"));
+    scaleCheckBox = new QCheckBox(tr("&Увеличить"));
 
 
 //  Connection (slots)
@@ -84,6 +85,8 @@ Widget::Widget()
             this, &Widget::brushChanged);
     connect(rotateCheckBox, &QAbstractButton::toggled,
             renderArea, &Render::setTransformed);
+    connect(scaleCheckBox, &QAbstractButton::toggled,
+            renderArea, &Render::setScaled);
 
 
 //  Adding widgets
@@ -101,7 +104,8 @@ Widget::Widget()
     mainLayout->addWidget(brushStyleLabel, 2, 2, Qt::AlignRight);
     mainLayout->addWidget(brushStyleComboBox, 2, 3);
     mainLayout->addWidget(otherOptionsLabel, 5, 0, Qt::AlignRight);
-    mainLayout->addWidget(rotateCheckBox, 5, 1, 1, 2, Qt::AlignRight);
+    mainLayout->addWidget(rotateCheckBox, 5, 1, 1, 1, Qt::AlignRight);
+    mainLayout->addWidget(scaleCheckBox, 5, 2, 1, 2, Qt::AlignRight);
     setLayout(mainLayout);
 
     shapeChanged();
@@ -112,7 +116,7 @@ Widget::Widget()
     setWindowTitle(tr("Графические примитивы"));
 }
 
-//Methods for parameters
+// Methods for parameters
 void Widget::shapeChanged()
 {
     Render::Shape shape = Render::Shape(shapeComboBox->itemData(

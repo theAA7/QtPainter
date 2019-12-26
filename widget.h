@@ -35,6 +35,7 @@ private:
     QComboBox *penStyleComboBox;
     QComboBox *brushStyleComboBox;
     QCheckBox *rotateCheckBox;
+    QCheckBox *scaleCheckBox;
 };
 
 #endif // WIDGET_H
