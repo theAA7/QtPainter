@@ -4,7 +4,6 @@
 
 #include <QBrush>
 #include <QPen>
-#include <QPixmap>
 #include <QWidget>
 
 class Render : public QWidget

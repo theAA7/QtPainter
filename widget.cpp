@@ -7,7 +7,7 @@ const int IdRole = Qt::UserRole;
 Widget::Widget()
 {
     renderArea = new Render;
-    setMinimumSize(600,500);
+    setMinimumSize(565,500);
 
 //  Shape
     shapeComboBox = new QComboBox;

@@ -68,7 +68,7 @@ void Render::paintEvent(QPaintEvent * /* event */)
     }
     // Увеличение
     if (scaled) {
-        painter.translate(-55, -20);
+        painter.translate(-55, -55);
         painter.scale(1.30, 1.30);
     }
 
