@@ -6,7 +6,7 @@
 #include <QPen>
 #include <QWidget>
 
-class Render : public QWidget
+class Render: public QWidget
 {
     Q_OBJECT
 

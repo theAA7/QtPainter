@@ -63,12 +63,12 @@ void Render::paintEvent(QPaintEvent * /* event */)
 
     // Поворот
     if (rotated) {
-        painter.translate(250, -90);
+        painter.translate(284, -142);
         painter.rotate(60.0);
     }
     // Увеличение
     if (scaled) {
-        painter.translate(-80, -60);
+        painter.translate(-75, -60);
         painter.scale(1.30, 1.30);
     }
 
@@ -95,16 +95,16 @@ void Render::paintEvent(QPaintEvent * /* event */)
                 painter.drawEllipse(190, 100, 150, 150); // Отрисовываем круг
                 break;
             case Ellipse:
-                painter.drawEllipse(150, 100, 250, 150); // Отрисовываем эллипс
+                painter.drawEllipse(147, 100, 250, 150); // Отрисовываем эллипс
                 break;
             case Arc:
-                painter.drawArc(150, 100, 250, 180, 30 * 16, 120 * 16); // Отрисовываем дугу
+                painter.drawArc(147, 100, 250, 180, 30 * 16, 120 * 16); // Отрисовываем дугу
                 break;
             case Chord:
-                 painter.drawChord(150, 100, 250, 200, 30 * 16, 120 * 16); // Отрисовываем сегмент
+                 painter.drawChord(147, 100, 250, 200, 30 * 16, 120 * 16); // Отрисовываем сегмент
                 break;
             case Pie:
-                  painter.drawPie(150, 100, 250, 200, 30 * 16, 120 * 16); // Отрисовываем сектор
+                  painter.drawPie(147, 100, 250, 200, 30 * 16, 120 * 16); // Отрисовываем сектор
                 break;
             }
 }
