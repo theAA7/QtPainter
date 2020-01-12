@@ -28,7 +28,7 @@ Widget::Widget()
 // Pen Width
     penWidthSpinBox = new QSpinBox;
     penWidthSpinBox->setRange(0, 20);
-    penWidthSpinBox->setSpecialValueText(tr("0 (cosmetic pen)"));
+    penWidthSpinBox->setSpecialValueText(tr("0 (default)"));
 
     penWidthLabel = new QLabel(tr("Pen &Width:"));
     penWidthLabel->setBuddy(penWidthSpinBox);

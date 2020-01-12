@@ -68,7 +68,7 @@ void Render::paintEvent(QPaintEvent * /* event */)
     }
     // Увеличение
     if (scaled) {
-        painter.translate(-55, -55);
+        painter.translate(-80, -60);
         painter.scale(1.30, 1.30);
     }
 
@@ -81,7 +81,7 @@ void Render::paintEvent(QPaintEvent * /* event */)
                 painter.setBrush(QBrush(Qt::NoBrush)); // Отрисовываем пустоту
                 break;
             case Line:
-                painter.drawLine(190, 100, 300, 200); // Отрисовываем линию
+                painter.drawLine(180, 100, 300, 200); // Отрисовываем линию
                 break;
             case Rect:
                 painter.drawRect(170, 100, 200, 150); // Отрисовываем прямоугольник
