@@ -20,7 +20,7 @@ public slots:
     void setShape(Shape shape);
     void setPen(const QPen &pen);
     void setBrush(const QBrush &brush);
-    void setTransformed(bool transformed);
+    void setRotated(bool rotated);
     void setScaled(bool scaled);
 
 protected:
@@ -30,7 +30,7 @@ private:
     Shape shape;
     QPen pen;
     QBrush brush;
-    bool transformed;
+    bool rotated;
     bool scaled;
 };
 

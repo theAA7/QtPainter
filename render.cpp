@@ -5,14 +5,14 @@ Render::Render(QWidget *parent)
     : QWidget(parent)
 {
     shape = None;
-    transformed = false;
+    rotated = false;
     scaled = false;
 
     setBackgroundRole(QPalette::Base);
     setAutoFillBackground(true);
 }
 
-// Methods for updating the Render area
+// Methods for updating the Widget
 ///////////////////////////////////
 void Render::setShape(Shape shape)
 {
@@ -32,9 +32,9 @@ void Render::setBrush(const QBrush &brush)
     update();
 }
 
-void Render::setTransformed(bool transformed)
+void Render::setRotated(bool rotated)
 {
-    this->transformed = transformed;
+    this->rotated = rotated;
     update();
 }
 
@@ -62,7 +62,7 @@ void Render::paintEvent(QPaintEvent * /* event */)
     painter.setBrush(brush);
 
     // Поворот
-    if (transformed) {
+    if (rotated) {
         painter.translate(250, -90);
         painter.rotate(60.0);
     }
@@ -81,14 +81,14 @@ void Render::paintEvent(QPaintEvent * /* event */)
                 painter.setBrush(QBrush(Qt::NoBrush)); // Отрисовываем пустоту
                 break;
             case Line:
-                painter.drawLine(180, 100, 300, 200); // Отрисовываем линию
+                painter.drawLine(180, 100, 360, 220); // Отрисовываем линию
                 break;
             case Rect:
                 painter.drawRect(170, 100, 200, 150); // Отрисовываем прямоугольник
                 break;
             case Polygon:
-                painter.translate(180, 90);
-                painter.scale(2, 2);
+                painter.translate(160, 65);
+                painter.scale(2.30, 2.30);
                 painter.drawPolygon(points, 4); // Отрисовываем многоугольник
                 break;
             case Circle:

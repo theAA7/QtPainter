@@ -8,6 +8,7 @@ Widget::Widget()
 {
     renderArea = new Render;
     setMinimumSize(565,500);
+    setMaximumSize(565,500);
 
 //  Shape
     shapeComboBox = new QComboBox;
@@ -84,7 +85,7 @@ Widget::Widget()
     connect(brushStyleComboBox, QOverload<int>::of(&QComboBox::activated),
             this, &Widget::brushChanged);
     connect(rotateCheckBox, &QAbstractButton::toggled,
-            renderArea, &Render::setTransformed);
+            renderArea, &Render::setRotated);
     connect(scaleCheckBox, &QAbstractButton::toggled,
             renderArea, &Render::setScaled);
 
@@ -141,5 +142,5 @@ void Widget::brushChanged()
     Qt::BrushStyle style = Qt::BrushStyle(brushStyleComboBox->itemData(
             brushStyleComboBox->currentIndex(), IdRole).toInt());
 
-    renderArea->setBrush(QBrush(Qt::green, style));
+    renderArea->setBrush(QBrush(Qt::cyan, style));
 }
